@@ -1,0 +1,31 @@
+Select * From Production.ProductReview
+ 
+Select 
+	pr.*
+	,p.Name
+from Production.ProductReview pr
+	Inner Join Production.Product p on p.ProductID = pr.ProductID
+ 
+ 
+Select * From Person.EmailAddress
+Where EmailAddress in (
+					Select 
+						EmailAddress
+					from Production.ProductReview pr)
+ 
+Select * From Production.ProductReview
+ 
+ 
+Select * 
+From Sales.SalesOrderHeader soh
+	Inner Join Person.Person p on p.BusinessEntityID = soh.CustomerID
+	Inner Join Sales.SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID
+	Inner Join Production.Product pr on pr.ProductID = sod.ProductID
+Where FirstName like '%John%' 
+	and LastName like '%Smith%'
+ 
+ 
+Select * From HumanResources.Employee
+	Inner Join Person.Person on Person.BusinessEntityID = Employee.BusinessEntityID
+Where FirstName like '%Laura%' 
+		and LastName like '%Norman%'
